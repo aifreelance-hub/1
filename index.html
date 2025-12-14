@@ -1,222 +1,524 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
   <meta charset="UTF-8" />
-  <title>Men’s Performance & Vitality Support</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Private Performance Support — Discreet Help</title>
+  <meta name="description" content="Discreet, non-medical performance support focused on control, stability, and confidence. Private WhatsApp help." />
+  <meta name="robots" content="noindex,nofollow" />
 
   <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: #0b0b0b;
-      color: #f5f5f5;
-      line-height: 1.6;
+    :root{
+      --bg:#0c0f16;
+      --bg2:#0a0d13;
+      --card:rgba(255,255,255,.06);
+      --text:#eef2ff;
+      --muted:rgba(238,242,255,.74);
+      --line:rgba(255,255,255,.10);
+      --accent:#22c55e;
+      --shadow:0 22px 70px rgba(0,0,0,.55);
+      --radius:22px;
     }
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(1000px 540px at 18% -10%, rgba(34,197,94,.14), transparent 60%),
+        radial-gradient(900px 520px at 95% 10%, rgba(99,102,241,.12), transparent 62%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
+      color:var(--text);
+      line-height:1.55;
+      overflow-x:hidden;
     }
-    h1, h2, h3 {
-      font-weight: 600;
-      letter-spacing: 0.3px;
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+    .section{padding:34px 0}
+    .thinLine{height:1px;background:var(--line);margin:22px 0}
+    .badgeRow{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.12);
+      color:rgba(255,255,255,.92);
+      font-size:13px;
+      backdrop-filter: blur(10px);
     }
-    h1 {
-      font-size: 42px;
-      margin-bottom: 20px;
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px rgba(34,197,94,.15)}
+    h1{
+      margin:0 0 10px;
+      font-size:44px;
+      line-height:1.05;
+      letter-spacing:-.4px;
     }
-    h2 {
-      font-size: 30px;
-      margin: 60px 0 20px;
+    @media(max-width:520px){ h1{font-size:34px} }
+    .sub{
+      margin:0;
+      color:rgba(238,242,255,.86);
+      font-size:16.5px;
+      max-width:780px;
     }
-    p {
-      color: #d0d0d0;
-      font-size: 18px;
+
+    /* ===== HERO (whole block video background) ===== */
+    .heroCard.heroVideoWrap{
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:var(--shadow);
+      background:rgba(255,255,255,.04);
     }
-    .btn {
-      display: inline-block;
-      background: linear-gradient(135deg,#caa24d,#f5d37a);
-      color: #000;
-      padding: 16px 32px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: 600;
-      margin-top: 25px;
+    .heroBgVideo{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:0;
+      transform:scale(1.02);
+      filter:contrast(1.05) saturate(.95);
     }
-    .hero {
-      text-align: center;
-      padding: 100px 20px;
-      background: radial-gradient(circle at top,#1c1c1c,#000);
+    .heroBgOverlay{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(8,10,18,.86) 0%,
+          rgba(8,10,18,.55) 45%,
+          rgba(8,10,18,.78) 100%
+        );
     }
-    .hero p {
-      max-width: 700px;
-      margin: auto;
-      font-size: 20px;
+    .heroInner{
+      position:relative;
+      z-index:2;
+      padding:18px;
     }
-    .section {
-      border-top: 1px solid #222;
-      padding-top: 60px;
+
+    .heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:stretch}
+    @media(max-width:900px){ .heroGrid{grid-template-columns:1fr} }
+
+    /* Left “media” area becomes a clean overlay card (no video here anymore) */
+    .mediaCard{
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.22);
+      overflow:hidden;
+      min-height:320px;
+      position:relative;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-      gap: 30px;
-      margin-top: 30px;
+    @media(max-width:520px){ .mediaCard{min-height:240px} }
+    .mediaCard::after{
+      content:"";
+      position:absolute;inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.58));
+      pointer-events:none;
     }
-    .card {
-      background: #111;
-      border-radius: 16px;
-      padding: 30px;
+    .mediaCopy{
+      position:absolute;left:16px;right:16px;bottom:16px;
+      z-index:2;
+      color:#fff;
     }
-    .video-box, .image-box {
-      background: #000;
-      border-radius: 16px;
-      overflow: hidden;
-      margin-top: 30px;
+    .mediaTitle{margin:0 0 8px;font-size:20px;letter-spacing:-.2px}
+    .mediaText{margin:0;color:rgba(255,255,255,.90);font-size:13.8px;max-width:520px}
+
+    /* Right text panel */
+    .side{
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.07);
+      padding:16px;
+      display:flex;flex-direction:column;gap:12px;
+      backdrop-filter: blur(10px);
     }
-    .video-box video, .image-box img {
-      width: 100%;
-      display: block;
+    .miniT{margin:0;font-weight:950;font-size:15px}
+    .p{margin:0;color:var(--muted);font-size:13.8px}
+    .callout{
+      border-radius:18px;
+      border:1px solid rgba(34,197,94,.20);
+      background:rgba(34,197,94,.10);
+      padding:14px;
     }
-    .footer {
-      margin-top: 80px;
-      padding-top: 40px;
-      border-top: 1px solid #222;
-      font-size: 14px;
-      color: #888;
+    .list{margin:10px 0 0;padding-left:18px}
+    .list li{margin:8px 0;color:rgba(238,242,255,.86);font-size:13.8px}
+
+    .fine{
+      margin:0;
+      color:rgba(238,242,255,.55);
+      font-size:11.5px;
+      max-width:980px;
+    }
+
+    /* Cards */
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    .card{
+      grid-column:span 6;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.06);
+      padding:16px;
+      box-shadow:0 14px 45px rgba(0,0,0,.35);
+    }
+    @media(max-width:760px){ .card{grid-column:span 12} }
+    .h2{margin:0 0 10px;font-size:22px;letter-spacing:-.2px}
+    .lead{margin:0 0 14px;color:var(--muted);max-width:860px;font-size:14px}
+    .h3{margin:0 0 6px;font-size:15px;font-weight:950}
+    .muted{margin:0;color:var(--muted);font-size:13.8px}
+
+    /* Gallery */
+    .gallery{
+      grid-column:span 7;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.06);
+      padding:12px;
+      overflow:hidden;
+    }
+    .galleryGrid{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
+    .gimg{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background:#000;
+    }
+    .gimg img{width:100%;height:100%;object-fit:cover;display:block}
+    .g1{grid-column:span 7;aspect-ratio:16/11}
+    .g2{grid-column:span 5;aspect-ratio:16/11}
+    .g3,.g4,.g5{grid-column:span 4;aspect-ratio:1/1}
+    @media(max-width:760px){
+      .gallery{grid-column:span 12}
+      .g1,.g2,.g3,.g4,.g5{grid-column:span 12;aspect-ratio:16/10}
+    }
+
+    .rightPanel{
+      grid-column:span 5;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.06);
+      padding:16px;
+      display:flex;flex-direction:column;gap:12px;
+    }
+    @media(max-width:760px){ .rightPanel{grid-column:span 12} }
+
+    /* Video box */
+    .videoBox{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background:#000;
+    }
+    .videoBox video{width:100%;display:block}
+
+    /* Factory */
+    .factoryGrid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    .factoryImg{
+      grid-column:span 7;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background:#000;
+    }
+    .factoryImg img{width:100%;display:block;object-fit:cover;aspect-ratio:16/10}
+    .factoryTxt{
+      grid-column:span 5;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.06);
+      padding:16px;
+    }
+    @media(max-width:760px){
+      .factoryImg,.factoryTxt{grid-column:span 12}
+    }
+
+    /* Before/After */
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media(max-width:760px){ .compare{grid-template-columns:1fr} }
+    .panel{
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.06);
+      padding:16px;
+    }
+    .tag{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:12px;font-weight:950;
+      padding:7px 10px;border-radius:999px;
+      background:rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.10);
+      margin-bottom:10px;
+    }
+    .panel ul{margin:8px 0 0;padding-left:18px}
+    .panel li{margin:8px 0;color:rgba(238,242,255,.88);font-size:13.8px}
+
+    .spacerBottom{height:96px}
+
+    /* ONLY CTA */
+    .waBtn{
+      position:fixed;right:16px;bottom:16px;z-index:50;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:14px 16px;border-radius:999px;
+      background:linear-gradient(135deg, #25d366, #1ebe5d);
+      color:#06160e;font-weight:950;border:0;cursor:pointer;
+      box-shadow:0 20px 60px rgba(37,211,102,.35);
+      -webkit-tap-highlight-color: transparent;
+      user-select:none;
+      min-width:230px;
+    }
+    .waBtn small{display:block;font-weight:900;opacity:.82;font-size:12px}
+    .waIcon{width:12px;height:12px;border-radius:50%;background:#0b8f42;box-shadow:0 0 0 6px rgba(11,143,66,.22)}
+    @media(max-width:420px){ .waBtn{left:16px;right:16px;min-width:unset} }
+
+    /* Mobile overlay tweak */
+    @media (max-width: 768px){
+      .heroBgOverlay{
+        background:linear-gradient(180deg, rgba(8,10,18,.86), rgba(8,10,18,.68));
+      }
     }
   </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>When Performance Doesn’t Feel Consistent Anymore</h1>
-  <p>
-    Many men notice changes in firmness, control and confidence —
-    but don’t talk about it.
-    Modern male wellness focuses on support, not medication.
-  </p>
+  <!-- TOP: LANDING HERO -->
+  <div class="wrap section" style="padding-top:22px">
+    <div class="badgeRow">
+      <span class="badge"><span class="dot"></span> Discreet • Adults 18+</span>
+      <span class="badge">Control • Stability • Confidence</span>
+      <span class="badge">General wellness support (non-medical)</span>
+    </div>
 
-  <a class="btn" href="https://wa.me/11111111111">Private Consultation – Talk to Support</a>
-</section>
+    <h1>It Goes Soft.<br/>It Ends Too Fast.</h1>
 
-<div class="container">
+    <p class="sub">
+      You want it to last — but your body doesn’t listen.<br/>
+      It weakens halfway. Or it finishes before you’re ready.<br/><br/>
+      The hardest part isn’t the moment itself.
+      It’s what happens after: the silence, the excuse, the feeling you’re “not enough.”<br/><br/>
+      Private, pressure-free support — no public talk.
+    </p>
 
-<!-- PAIN POINTS -->
-<section class="section">
-  <h2>Many Men Feel This — Even If They Never Say It</h2>
+    <!-- HERO: whole block background video -->
+    <div class="heroCard heroVideoWrap">
 
-  <div class="grid">
-    <div class="card">Firmness isn’t as reliable as before</div>
-    <div class="card">Control feels harder during intimate moments</div>
-    <div class="card">Confidence drops before things even begin</div>
-    <div class="card">Stress and pressure make performance worse</div>
-    <div class="card">You don’t want prescriptions or awkward visits</div>
-    <div class="card">You just want to feel like yourself again</div>
+      <video class="heroBgVideo" autoplay muted loop playsinline preload="auto" poster="media/p1.jpg">
+        <source src="media/hero.mp4" type="video/mp4">
+      </video>
+      <div class="heroBgOverlay"></div>
+
+      <div class="heroInner">
+        <div class="heroGrid">
+
+          <!-- Left overlay card (no video here anymore) -->
+          <div class="mediaCard">
+            <div class="mediaCopy">
+              <p class="mediaTitle">Private Help — Quiet, Direct, Discreet</p>
+              <p class="mediaText">
+                No labels. No promises. Just realistic guidance focused on stability and control under pressure.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right panel -->
+          <div class="side">
+            <p class="miniT">What this is (and what it’s not)</p>
+            <p class="p">
+              This is <b>general wellness support</b> focused on performance confidence, timing control,
+              and stability under pressure.<br/><br/>
+              It is <b>not</b> a diagnosis, prescription, or medical treatment. No guarantees — only realistic guidance.
+            </p>
+
+            <div class="callout">
+              <p class="miniT" style="margin:0 0 6px">Why men choose private messaging</p>
+              <p class="p" style="margin:0">Because talking about it out loud is the hardest part.</p>
+              <ul class="list">
+                <li>Discreet one-to-one chat</li>
+                <li>Simple routine guidance</li>
+                <li>Realistic expectations</li>
+              </ul>
+            </div>
+
+            <p class="p">If you’re ready, tap the WhatsApp button (the only button on this page).</p>
+          </div>
+        </div>
+
+        <div class="thinLine"></div>
+        <p class="fine">
+          Disclaimer: Adult general wellness support only. Not intended to diagnose, treat, cure, or prevent any disease or condition. Individual experience varies.
+        </p>
+      </div>
+    </div>
   </div>
 
-  <a class="btn" href="https://wa.me/11111111111">Talk Privately With Support</a>
-</section>
+  <!-- SECTION: REAL SITUATIONS -->
+  <div class="wrap section">
+    <h2 class="h2">Real situations men recognize instantly</h2>
+    <p class="lead">No medical words. Just the reality most men hide.</p>
 
-<!-- VIDEO -->
-<section class="section">
-  <h2>A Modern Approach to Male Performance Support</h2>
-  <p>
-    Watch how adult men incorporate non-medical vitality support
-    into their personal wellness routines.
-  </p>
-
-  <div class="video-box">
-    <!-- Replace with your video -->
-    <video controls muted>
-      <source src="your-video.mp4" type="video/mp4">
-    </video>
+    <div class="grid">
+      <div class="card">
+        <p class="h3">“It doesn’t stay firm.”</p>
+        <p class="muted">It starts okay, then fades. The more you notice it slipping, the faster it disappears.</p>
+      </div>
+      <div class="card">
+        <p class="h3">“It ends before I want it to.”</p>
+        <p class="muted">Control feels gone. Once it starts, slowing down feels impossible under pressure.</p>
+      </div>
+      <div class="card">
+        <p class="h3">“My mind ruins it first.”</p>
+        <p class="muted">Before anything happens, you’re already thinking: “What if it fails again?”</p>
+      </div>
+      <div class="card">
+        <p class="h3">“I avoid intimacy now.”</p>
+        <p class="muted">Not because desire is gone — but because failing again feels worse than saying no.</p>
+      </div>
+    </div>
   </div>
 
-  <a class="btn" href="https://wa.me/22222222222">Start a Private Chat</a>
-</section>
+  <!-- SECTION: PRODUCT VISUALS -->
+  <div class="wrap section">
+    <h2 class="h2">Materials (exact visuals)</h2>
+    <p class="lead">Everything shown here is what you’ll receive/see. Packaging may vary by batch.</p>
 
-<!-- SOLUTION -->
-<section class="section">
-  <h2>Designed for Performance, Stamina & Confidence</h2>
-  <p>
-    This product is created for adult men who want to support
-    sexual performance, endurance and confidence
-    as part of a consistent wellness routine.
-  </p>
-  <p>
-    It is not a drug or medical treatment —
-    but a natural vitality and performance support option.
-  </p>
-</section>
+    <div class="grid">
+      <div class="gallery">
+        <div class="galleryGrid">
+          <div class="gimg g1"><img src="media/p1.jpg" alt="Product visual p1"></div>
+          <div class="gimg g2"><img src="media/p2.jpg" alt="Product visual p2"></div>
+          <div class="gimg g3"><img src="media/p3.jpg" alt="Product visual p3"></div>
+          <div class="gimg g4"><img src="media/p4.jpg" alt="Product visual p4"></div>
+          <div class="gimg g5"><img src="media/p5.jpg" alt="Product visual p5"></div>
+        </div>
 
-<!-- INGREDIENTS -->
-<section class="section">
-  <h2>Crafted With Traditional Wellness Ingredients</h2>
+        <div class="thinLine"></div>
 
-  <div class="grid">
-    <div class="card">Natural honey base</div>
-    <div class="card">Traditional herbal extracts</div>
-    <div class="card">Easy-to-use single sachets</div>
-    <div class="card">No prescription required</div>
-  </div>
-</section>
+        <div class="videoBox">
+          <video controls playsinline preload="metadata" poster="media/p1.jpg">
+            <source src="media/product.mp4" type="video/mp4">
+          </video>
+        </div>
 
-<!-- WHY CHAT -->
-<section class="section">
-  <h2>Why a Private Consultation Is Recommended</h2>
-  <p>
-    Every man’s situation is different.
-    Timing, routine and expectations matter.
-  </p>
-  <p>
-    Private guidance helps ensure a better experience —
-    without judgment or pressure.
-  </p>
+        <p class="fine" style="margin-top:10px">
+          Tip: If you don’t want a product video, delete the entire &lt;div class="videoBox"&gt; block.
+        </p>
+      </div>
 
-  <a class="btn" href="https://wa.me/22222222222">Chat With a Specialist</a>
-</section>
+      <div class="rightPanel">
+        <p class="miniT">Designed to support</p>
+        <p class="p">
+          A routine-based vitality approach designed to support stamina, timing control, and confidence under pressure.
+          The goal is improving consistency — not promising outcomes.
+        </p>
 
-<!-- TRUST -->
-<section class="section">
-  <h2>Manufactured With Quality & Experience</h2>
-  <p>
-    Produced by an experienced health-product supplier
-    following strict quality standards.
-  </p>
+        <div class="thinLine"></div>
 
-  <div class="image-box">
-    <!-- Replace with factory / product image -->
-    <img src="your-image.jpg" alt="Manufacturing & Quality">
-  </div>
-</section>
+        <p class="miniT">Usage (edit if needed)</p>
+        <p class="p">
+          24 sachets per box • 10g per sachet • Suggested use: 1 sachet every 2 days (as needed).<br/>
+          Do not exceed recommended serving. Store in a cool, dry place. Keep out of reach of children.
+        </p>
 
-<!-- PRIVACY -->
-<section class="section">
-  <h2>Privacy & Discretion</h2>
+        <div class="thinLine"></div>
 
-  <div class="grid">
-    <div class="card">Discreet packaging</div>
-    <div class="card">No product description on shipping label</div>
-    <div class="card">Tracking available</div>
-    <div class="card">Adult use only (18+)</div>
+        <p class="miniT">Why message first</p>
+        <p class="p">
+          Because saying “it fades” or “I lose control” is harder than sending a message.
+          Private guidance lets you start quietly.
+        </p>
+      </div>
+    </div>
   </div>
 
-  <a class="btn" href="https://wa.me/11111111111">Contact Support Now</a>
-</section>
+  <!-- SECTION: FACTORY / TRUST -->
+  <div class="wrap section">
+    <h2 class="h2">Quality & credibility</h2>
+    <p class="lead">Trust matters. Here’s a separate section for your manufacturing/quality visual.</p>
 
-<!-- FOOTER -->
-<div class="footer">
-  <p>
-    This product is not intended to diagnose, treat, cure or prevent any disease.
-    Individual results may vary. For adult use only.
-  </p>
-</div>
+    <div class="factoryGrid">
+      <div class="factoryImg">
+        <img src="media/factory.jpg" alt="Factory / Quality visual">
+      </div>
+      <div class="factoryTxt">
+        <p class="h3">What we do (and don’t) claim</p>
+        <p class="muted">
+          We focus on general wellness support and routine guidance.
+          We do not claim to diagnose, treat, cure, or prevent any disease.
+        </p>
+        <div class="thinLine"></div>
+        <p class="h3">Discretion notes</p>
+        <p class="muted">
+          If you offer discreet packaging/labeling and shipping details, you can add those specifics here — only if true.
+        </p>
+      </div>
+    </div>
+  </div>
 
-</div>
+  <!-- SECTION: BEFORE/AFTER -->
+  <div class="wrap section">
+    <h2 class="h2">Before vs After (with consistency)</h2>
+    <p class="lead">Not “instant”. It’s about calming the response and building stability over time.</p>
+
+    <div class="compare">
+      <div class="panel">
+        <span class="tag">BEFORE</span>
+        <ul>
+          <li>Overthinking and pressure</li>
+          <li>Unstable firmness</li>
+          <li>Timing feels hard to control</li>
+          <li>Confidence collapses mid-moment</li>
+          <li>Replaying it afterward</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <span class="tag">AFTER</span>
+        <ul>
+          <li>Calmer response under pressure</li>
+          <li>Improved stability</li>
+          <li>Better sense of control</li>
+          <li>Confidence builds from consistency</li>
+          <li>Less fear, more presence</li>
+        </ul>
+        <p class="fine" style="margin-top:12px">
+          Individual experience varies. General wellness support only.
+        </p>
+      </div>
+    </div>
+
+    <div class="thinLine"></div>
+    <p class="fine">
+      Disclaimer: Adult use only (18+). General wellness support content only. Not intended to diagnose, treat, cure, or prevent any disease or condition.
+    </p>
+
+    <div class="spacerBottom"></div>
+  </div>
+
+  <!-- ONLY CTA -->
+  <button class="waBtn" id="waBtn" aria-label="WhatsApp Private Help">
+    <span class="waIcon"></span>
+    WhatsApp Private Help
+    <small>Control • Stability • Confidence</small>
+  </button>
+
+  <script>
+    // ====== SETTINGS ======
+    // Format: country code + number (no plus, no spaces)
+    const WHATSAPP_NUMBER = "11111111111"; // ← replace with your real number
+
+    const MSG =
+      "Hi, I want private support for performance control and confidence. " +
+      "I struggle with stability and timing under pressure. " +
+      "I’m looking for realistic, non-medical guidance.";
+
+    function waLink(num, msg){
+      return `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+    }
+
+    document.getElementById("waBtn").addEventListener("click", ()=>{
+      window.location.href = waLink(WHATSAPP_NUMBER, MSG);
+    });
+  </script>
 
 </body>
 </html>
