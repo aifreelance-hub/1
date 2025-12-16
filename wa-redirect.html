@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Redirecting...</title>
   <script>
+    // 1) 读取 cid（优先当前 URL，其次 referrer）
     const qs = new URLSearchParams(window.location.search);
     let cid = qs.get('cid');
 
@@ -12,10 +13,12 @@
       if (ref) cid = new URLSearchParams(ref).get('cid');
     }
 
+    // 2) 回传给 Propeller（软转化）
     if (cid) {
       new Image().src = 'https://track.propellerads.com/conversion?cid=' + cid;
     }
 
+    // 3) 跳转 WhatsApp（0.3 秒）
     setTimeout(() => {
       window.location.href = 'https://wa.me/15852027140';
     }, 300);
