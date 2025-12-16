@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    const qs = new URLSearchParams(window.location.search);
+    let cid = qs.get('cid');
+
+    if (!cid && document.referrer) {
+      const ref = document.referrer.split('?')[1];
+      if (ref) cid = new URLSearchParams(ref).get('cid');
+    }
+
+    if (cid) {
+      new Image().src = 'https://track.propellerads.com/conversion?cid=' + cid;
+    }
+
+    setTimeout(() => {
+      window.location.href = 'https://wa.me/15852027140';
+    }, 300);
+  </script>
+</head>
+<body>Redirecting…</body>
+</html>
