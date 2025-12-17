@@ -3,31 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <title>Redirecting...</title>
+  <meta name="referrer" content="no-referrer-when-downgrade" />
   <script>
-    // 1️⃣ 读取 clickid（Propeller 的 {clickid}）
+    // 1) 读取 subid（建议你在 Propeller 里用 ${SUBID} 传进来）
     const qs = new URLSearchParams(window.location.search);
-    let clickid = qs.get('clickid');
+    let subid = qs.get('subid');
 
-    if (!clickid && document.referrer) {
-      const ref = document.referrer.split('?')[1];
-      if (ref) clickid = new URLSearchParams(ref).get('clickid');
+    // 兜底：如果按钮没带参数，尝试从 referrer 里拿（不一定总能拿到）
+    if (!subid && document.referrer) {
+      try {
+        const refUrl = new URL(document.referrer);
+        subid = refUrl.searchParams.get('subid');
+      } catch (e) {}
     }
 
-    // 2️⃣ 回传 Propeller 转化（官方 S2S）
-    if (clickid) {
-      new Image().src =
+    // 2) 回传 Propeller 转化
+    if (subid) {
+      const img = new Image();
+      img.referrerPolicy = "no-referrer";
+      img.src =
         'https://ad.propellerads.com/conversion.php' +
         '?aid=3884601' +
         '&pid=' +
         '&tid=151194' +
-        '&visitor_id=' + clickid +
+        '&visitor_id=' + encodeURIComponent(subid) +
         '&payout=0';
     }
 
-    // 3️⃣ 跳转 WhatsApp
+    // 3) 跳转 WhatsApp（给回传留一点时间更稳）
     setTimeout(() => {
       window.location.href = 'https://wa.me/15852027140';
-    }, 300);
+    }, 800);
   </script>
 </head>
 <body>Redirecting…</body>
