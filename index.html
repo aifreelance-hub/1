@@ -511,23 +511,26 @@
   </button>
 
   <script>
-    // ====== SETTINGS ======
-    // Format: country code + number (no plus, no spaces)
-    const WHATSAPP_NUMBER = "15852027140"; // ← replace with your real number
+  // ===== SETTINGS =====
+  const WHATSAPP_NUMBER = "15852027140";
 
-    const MSG =
-      "Hi, I want private support for performance control and confidence. " +
-      "I struggle with stability and timing under pressure. " +
-      "I’m looking for realistic, non-medical guidance.";
+  const MSG =
+    "Hi, I want private support for performance control and confidence. " +
+    "I struggle with stability and timing under pressure. " +
+    "I'm looking for realistic, non-medical guidance.";
 
-    function waLink(num, msg){
-      return `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
-    }
+  function waLink(num, msg) {
+    return `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+  }
 
-    document.getElementById("waBtn").addEventListener("click", ()=>{
-  window.location.href = "/wa-redirect.html";
-});
-  </script>
+  // ✅ 从首页 URL 里拿 subid（广告带过来的）
+  const subid = new URLSearchParams(window.location.search).get("subid") || "";
+
+  document.getElementById("waBtn").addEventListener("click", () => {
+    // ✅ 把 subid 继续传给 wa-redirect
+    window.location.href = "/wa-redirect.html?subid=" + encodeURIComponent(subid);
+  });
+</script>
 
 </body>
 </html>
