@@ -4,21 +4,27 @@
   <meta charset="UTF-8" />
   <title>Redirecting...</title>
   <script>
-    // 1) 读取 cid（优先当前 URL，其次 referrer）
+    // 1️⃣ 读取 clickid（Propeller 的 {clickid}）
     const qs = new URLSearchParams(window.location.search);
-    let cid = qs.get('cid');
+    let clickid = qs.get('clickid');
 
-    if (!cid && document.referrer) {
+    if (!clickid && document.referrer) {
       const ref = document.referrer.split('?')[1];
-      if (ref) cid = new URLSearchParams(ref).get('cid');
+      if (ref) clickid = new URLSearchParams(ref).get('clickid');
     }
 
-    // 2) 回传给 Propeller（软转化）
-    if (cid) {
-      new Image().src = 'https://track.propellerads.com/conversion?cid=' + cid;
+    // 2️⃣ 回传 Propeller 转化（官方 S2S）
+    if (clickid) {
+      new Image().src =
+        'https://ad.propellerads.com/conversion.php' +
+        '?aid=3884601' +
+        '&pid=' +
+        '&tid=151194' +
+        '&visitor_id=' + clickid +
+        '&payout=0';
     }
 
-    // 3) 跳转 WhatsApp（0.3 秒）
+    // 3️⃣ 跳转 WhatsApp
     setTimeout(() => {
       window.location.href = 'https://wa.me/15852027140';
     }, 300);
