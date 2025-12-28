@@ -307,7 +307,7 @@
             Alpha Energy Capsules are formulated to help men perform at their best — whether it’s at work, in the gym, or in everyday life. This advanced blend combines essential minerals like Magnesium and Zinc with herbal ingredients traditionally used to support energy, stamina, and reproductive health. It’s the natural way to help maintain vitality and confidence.
         </p>
 
-        <!-- Hero Section Background Video -->
+        <!-- Hero Section Image -->
         <div class="heroCard heroVideoWrap">
             <div class="heroBgOverlay"></div>
 
@@ -404,6 +404,27 @@
             </div>
         </div>
     </div>
+
+    <!-- WhatsApp Button -->
+    <button class="waBtn" id="waBtn" aria-label="WhatsApp Private Help">
+        <span class="waIcon"></span>
+        WhatsApp Private Help
+        <small>Control • Stability • Confidence</small>
+    </button>
+
+    <script>
+        const WHATSAPP_NUMBER = "15852027140";
+        const MSG =
+            "Hi, I want private support for performance control and confidence. I struggle with stability and timing under pressure. I'm looking for realistic, non-medical guidance.";
+
+        function waLink(num, msg) {
+            return `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+        }
+
+        document.getElementById("waBtn").addEventListener("click", () => {
+            window.location.href = waLink(WHATSAPP_NUMBER, MSG);
+        });
+    </script>
 
 </body>
 
