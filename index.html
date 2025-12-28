@@ -7,283 +7,144 @@
   <meta name="description" content="Discreet, non-medical performance support focused on control, stability, and confidence. Private WhatsApp help." />
   <meta name="robots" content="index,follow" />
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17779181109"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17779181109');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17779181109"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17779181109');
+  </script>
 
   <style>
-    :root{
-      --bg:#0c0f16;
-      --bg2:#0a0d13;
-      --card:rgba(255,255,255,.06);
-      --text:#eef2ff;
-      --muted:rgba(238,242,255,.74);
-      --line:rgba(255,255,255,.10);
-      --accent:#22c55e;
-      --shadow:0 22px 70px rgba(0,0,0,.55);
-      --radius:22px;
+    :root {
+      --bg: #0c0f16;
+      --bg2: #0a0d13;
+      --card: rgba(255, 255, 255, .06);
+      --text: #eef2ff;
+      --muted: rgba(238, 242, 255, .74);
+      --line: rgba(255, 255, 255, .10);
+      --accent: #22c55e;
+      --shadow: 0 22px 70px rgba(0, 0, 0, .55);
+      --radius: 22px;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Arial,sans-serif;
-      background:
-        radial-gradient(1000px 540px at 18% -10%, rgba(34,197,94,.14), transparent 60%),
-        radial-gradient(900px 520px at 95% 10%, rgba(99,102,241,.12), transparent 62%),
-        linear-gradient(180deg,var(--bg),var(--bg2));
-      color:var(--text);
-      line-height:1.55;
-      overflow-x:hidden;
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--bg), var(--bg2));
+      color: var(--text);
+      line-height: 1.55;
+      overflow-x: hidden;
     }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1100px;margin:0 auto;padding:0 18px}
-    .section{padding:34px 0}
-    .thinLine{height:1px;background:var(--line);margin:22px 0}
-    .badgeRow{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 14px}
-    .badge{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:8px 12px;border-radius:999px;
-      background:rgba(255,255,255,.07);
-      border:1px solid rgba(255,255,255,.12);
-      color:rgba(255,255,255,.92);
-      font-size:13px;
-      backdrop-filter: blur(10px);
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 18px; }
+    .section { padding: 34px 0; }
+    .thinLine { height: 1px; background: var(--line); margin: 22px 0; }
+    h1 { font-size: 44px; margin: 0 0 10px; }
+    .sub { margin: 0; color: rgba(238, 242, 255, .86); font-size: 16.5px; max-width: 780px; }
+    .waBtn {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 50;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #25d366, #1ebe5d);
+      color: #06160e;
+      font-weight: 950;
+      border: 0;
+      cursor: pointer;
+      box-shadow: 0 20px 60px rgba(37, 211, 102, .35);
+      min-width: 230px;
     }
-    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px rgba(34,197,94,.15)}
-    h1{
-      margin:0 0 10px;
-      font-size:44px;
-      line-height:1.05;
-      letter-spacing:-.4px;
-    }
-    @media(max-width:520px){ h1{font-size:34px} }
-    .sub{
-      margin:0;
-      color:rgba(238,242,255,.86);
-      font-size:16.5px;
-      max-width:780px;
-    }
-
-    /* ===== HERO (whole block video background) ===== */
-    .heroCard.heroVideoWrap{
-      position:relative;
-      overflow:hidden;
-      border-radius:28px;
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:var(--shadow);
-      background:rgba(255,255,255,.04);
-    }
-    .heroBgVideo{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      z-index:0;
-      transform:scale(1.02);
-      filter:contrast(1.05) saturate(.95);
-    }
-    .heroBgOverlay{
-      position:absolute;
-      inset:0;
-      z-index:1;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(8,10,18,.86) 0%,
-          rgba(8,10,18,.55) 45%,
-          rgba(8,10,18,.78) 100%
-        );
-    }
-    .heroInner{
-      position:relative;
-      z-index:2;
-      padding:18px;
+    .waBtn small { display: block; font-weight: 900; opacity: .82; font-size: 12px; }
+    .waIcon {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #0b8f42;
+      box-shadow: 0 0 0 6px rgba(11, 143, 66, .22);
     }
 
-    .heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:stretch}
-    @media(max-width:900px){ .heroGrid{grid-template-columns:1fr} }
-
-    /* Left “media” area becomes a clean overlay card (no video here anymore) */
-    .mediaCard{
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(0,0,0,.22);
-      overflow:hidden;
-      min-height:320px;
-      position:relative;
+    /* Hero Section (with Video Background) */
+    .heroCard {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      box-shadow: var(--shadow);
+      background: rgba(255, 255, 255, .04);
+      height: 100vh;
     }
-    @media(max-width:520px){ .mediaCard{min-height:240px} }
-    .mediaCard::after{
-      content:"";
-      position:absolute;inset:0;
-      background:linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.58));
-      pointer-events:none;
+    .heroBgVideo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transform: scale(1.02);
+      filter: contrast(1.05) saturate(.95);
     }
-    .mediaCopy{
-      position:absolute;left:16px;right:16px;bottom:16px;
-      z-index:2;
-      color:#fff;
+    .heroBgOverlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(90deg, rgba(8, 10, 18, .86) 0%, rgba(8, 10, 18, .55) 45%, rgba(8, 10, 18, .78) 100%);
     }
-    .mediaTitle{margin:0 0 8px;font-size:20px;letter-spacing:-.2px}
-    .mediaText{margin:0;color:rgba(255,255,255,.90);font-size:13.8px;max-width:520px}
-
-    /* Right text panel */
-    .side{
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.07);
-      padding:16px;
-      display:flex;flex-direction:column;gap:12px;
-      backdrop-filter: blur(10px);
-    }
-    .miniT{margin:0;font-weight:950;font-size:15px}
-    .p{margin:0;color:var(--muted);font-size:13.8px}
-    .callout{
-      border-radius:18px;
-      border:1px solid rgba(34,197,94,.20);
-      background:rgba(34,197,94,.10);
-      padding:14px;
-    }
-    .list{margin:10px 0 0;padding-left:18px}
-    .list li{margin:8px 0;color:rgba(238,242,255,.86);font-size:13.8px}
-
-    .fine{
-      margin:0;
-      color:rgba(238,242,255,.55);
-      font-size:11.5px;
-      max-width:980px;
+    .heroInner {
+      position: relative;
+      z-index: 2;
+      padding: 18px;
+      text-align: center;
+      color: #fff;
     }
 
-    /* Cards */
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
-    .card{
-      grid-column:span 6;
-      border-radius:20px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.06);
-      padding:16px;
-      box-shadow:0 14px 45px rgba(0,0,0,.35);
-    }
-    @media(max-width:760px){ .card{grid-column:span 12} }
-    .h2{margin:0 0 10px;font-size:22px;letter-spacing:-.2px}
-    .lead{margin:0 0 14px;color:var(--muted);max-width:860px;font-size:14px}
-    .h3{margin:0 0 6px;font-size:15px;font-weight:950}
-    .muted{margin:0;color:var(--muted);font-size:13.8px}
-
-    /* Gallery */
-    .gallery{
-      grid-column:span 7;
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.06);
-      padding:12px;
-      overflow:hidden;
-    }
-    .galleryGrid{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
-    .gimg{
-      border-radius:16px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.10);
-      background:#000;
-    }
-    .gimg img{width:100%;height:100%;object-fit:cover;display:block}
-    .g1{grid-column:span 7;aspect-ratio:16/11}
-    .g2{grid-column:span 5;aspect-ratio:16/11}
-    .g3,.g4,.g5{grid-column:span 4;aspect-ratio:1/1}
-    @media(max-width:760px){
-      .gallery{grid-column:span 12}
-      .g1,.g2,.g3,.g4,.g5{grid-column:span 12;aspect-ratio:16/10}
+    .productInfo {
+      background: rgba(0, 0, 0, .7);
+      padding: 30px;
+      border-radius: 15px;
+      display: inline-block;
+      max-width: 600px;
+      margin-top: 200px;
+      color: #fff;
     }
 
-    .rightPanel{
-      grid-column:span 5;
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.06);
-      padding:16px;
-      display:flex;flex-direction:column;gap:12px;
-    }
-    @media(max-width:760px){ .rightPanel{grid-column:span 12} }
-
-    /* Video box */
-    .videoBox{
-      border-radius:18px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.10);
-      background:#000;
-    }
-    .videoBox video{width:100%;display:block}
-
-    /* Factory */
-    .factoryGrid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
-    .factoryImg{
-      grid-column:span 7;
-      border-radius:22px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.10);
-      background:#000;
-    }
-    .factoryImg img{width:100%;display:block;object-fit:cover;aspect-ratio:16/10}
-    .factoryTxt{
-      grid-column:span 5;
-      border-radius:22px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.06);
-      padding:16px;
-    }
-    @media(max-width:760px){
-      .factoryImg,.factoryTxt{grid-column:span 12}
+    .productInfo h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
     }
 
-    /* Before/After */
-    .compare{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media(max-width:760px){ .compare{grid-template-columns:1fr} }
-    .panel{
-      border-radius:20px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.06);
-      padding:16px;
+    .productInfo p {
+      font-size: 16px;
+      margin-bottom: 20px;
     }
-    .tag{
-      display:inline-flex;align-items:center;gap:8px;
-      font-size:12px;font-weight:950;
-      padding:7px 10px;border-radius:999px;
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(255,255,255,.10);
-      margin-bottom:10px;
+
+    .productInfo .price {
+      font-size: 20px;
+      font-weight: bold;
     }
-    .panel ul{margin:8px 0 0;padding-left:18px}
-    .panel li{margin:8px 0;color:rgba(238,242,255,.88);font-size:13.8px}
 
-    .spacerBottom{height:96px}
-
-    /* ONLY CTA */
-    .waBtn{
-      position:fixed;right:16px;bottom:16px;z-index:50;
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:14px 16px;border-radius:999px;
-      background:linear-gradient(135deg, #25d366, #1ebe5d);
-      color:#06160e;font-weight:950;border:0;cursor:pointer;
-      box-shadow:0 20px 60px rgba(37,211,102,.35);
-      -webkit-tap-highlight-color: transparent;
-      user-select:none;
-      min-width:230px;
+    /* Product Images Section */
+    .productImages {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 50px;
     }
-    .waBtn small{display:block;font-weight:900;opacity:.82;font-size:12px}
-    .waIcon{width:12px;height:12px;border-radius:50%;background:#0b8f42;box-shadow:0 0 0 6px rgba(11,143,66,.22)}
-    @media(max-width:420px){ .waBtn{left:16px;right:16px;min-width:unset} }
+    .productImages img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
 
-    /* Mobile overlay tweak */
-    @media (max-width: 768px){
-      .heroBgOverlay{
-        background:linear-gradient(180deg, rgba(8,10,18,.86), rgba(8,10,18,.68));
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .productImages {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -291,107 +152,61 @@
 
 <body>
 
-  <!-- TOP: LANDING HERO -->
-  <div class="wrap section" style="padding-top:22px">
-    <div class="badgeRow">
-      <span class="badge"><span class="dot"></span> Discreet • Adults 18+</span>
-      <span class="badge">Control • Stability • Confidence</span>
-      <span class="badge">General wellness support (non-medical)</span>
-    </div>
-
-    <h1>It Goes Soft.<br/>It Ends Too Fast.</h1>
-
-    <p class="sub">
-      You want it to last — but your body doesn’t listen.<br/>
-      It weakens halfway. Or it finishes before you’re ready.<br/><br/>
-      The hardest part isn’t the moment itself.
-      It’s what happens after: the silence, the excuse, the feeling you’re “not enough.”<br/><br/>
-      Private, pressure-free support — no public talk.
-    </p>
-
-    <!-- HERO: whole block background video -->
-    <div class="heroCard heroVideoWrap">
-
-      <video class="heroBgVideo" autoplay muted loop playsinline preload="auto" poster="media/p1.jpg">
-        <source src="media/hero.mp4" type="video/mp4">
-      </video>
-      <div class="heroBgOverlay"></div>
-
-      <div class="heroInner">
-        <div class="heroGrid">
-
-          <!-- Left overlay card (no video here anymore) -->
-          <div class="mediaCard">
-            <div class="mediaCopy">
-              <p class="mediaTitle">Private Help — Quiet, Direct, Discreet</p>
-              <p class="mediaText">
-                No labels. No promises. Just realistic guidance focused on stability and control under pressure.
-              </p>
-            </div>
-          </div>
-
-          <!-- Right panel -->
-          <div class="side">
-            <p class="miniT">What this is (and what it’s not)</p>
-            <p class="p">
-              This is <b>general wellness support</b> focused on performance confidence, timing control,
-              and stability under pressure.<br/><br/>
-              It is <b>not</b> a diagnosis, prescription, or medical treatment. No guarantees — only realistic guidance.
-            </p>
-
-            <div class="callout">
-              <p class="miniT" style="margin:0 0 6px">Why men choose private messaging</p>
-              <p class="p" style="margin:0">Because talking about it out loud is the hardest part.</p>
-              <ul class="list">
-                <li>Discreet one-to-one chat</li>
-                <li>Simple routine guidance</li>
-                <li>Realistic expectations</li>
-              </ul>
-            </div>
-
-            <p class="p">If you’re ready, tap the WhatsApp button (the only button on this page).</p>
-          </div>
-        </div>
-
-        <div class="thinLine"></div>
-        <p class="fine">
-          Disclaimer: Adult general wellness support only. Not intended to diagnose, treat, cure, or prevent any disease or condition. Individual experience varies.
+  <!-- Hero Section -->
+  <div class="heroCard">
+    <video class="heroBgVideo" autoplay muted loop playsinline preload="auto" poster="media/p1.jpg">
+      <source src="media/hero.mp4" type="video/mp4">
+    </video>
+    <div class="heroBgOverlay"></div>
+    <div class="heroInner">
+      <div class="productInfo">
+        <h2>Alpha Energy — 14-Day Energy Recovery Plan</h2>
+        <p>
+          Boost your daily energy and vitality with natural plant-based ingredients. Every cycle is **14 days**. Flexible purchase with no auto-renewal.  
+          **Each cycle: $40.90**
         </p>
+        <button class="waBtn" id="waBtn" aria-label="WhatsApp Private Help">
+          <span class="waIcon"></span>
+          WhatsApp Private Help
+          <small>Flexible purchase • 14-Day Cycle</small>
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- SECTION: REAL SITUATIONS -->
+  <!-- Product Images Section -->
   <div class="wrap section">
-    <h2 class="h2">Real situations men recognize instantly</h2>
-    <p class="lead">No medical words. Just the reality most men hide.</p>
-
-    <div class="grid">
-      <div class="card">
-        <p class="h3">“It doesn’t stay firm.”</p>
-        <p class="muted">It starts okay, then fades. The more you notice it slipping, the faster it disappears.</p>
-      </div>
-      <div class="card">
-        <p class="h3">“It ends before I want it to.”</p>
-        <p class="muted">Control feels gone. Once it starts, slowing down feels impossible under pressure.</p>
-      </div>
-      <div class="card">
-        <p class="h3">“My mind ruins it first.”</p>
-        <p class="muted">Before anything happens, you’re already thinking: “What if it fails again?”</p>
-      </div>
-      <div class="card">
-        <p class="h3">“I avoid intimacy now.”</p>
-        <p class="muted">Not because desire is gone — but because failing again feels worse than saying no.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- SECTION: PRODUCT VISUALS -->
-  <div class="wrap section">
-    <h2 class="h2">Materials (exact visuals)</h2>
+    <h2 class="h2">Product Images (Exact Visuals)</h2>
     <p class="lead">Everything shown here is what you’ll receive/see. Packaging may vary by batch.</p>
 
-    <div class="grid">
-      <div class="gallery">
-        <div class="galleryGrid">
-          <div class="g
+    <div class="productImages">
+      <div>
+        <img src="media/product1.jpg" alt="Product Image 1">
+      </div>
+      <div>
+        <img src="media/product2.jpg" alt="Product Image 2">
+      </div>
+      <div>
+        <img src="media/product3.jpg" alt="Product Image 3">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // WhatsApp Setup
+    const WHATSAPP_NUMBER = "15852027140";
+    const MSG = "Hi, I want private support for performance control and confidence. I am interested in the 14-day cycle plan.";
+
+    // Generate WhatsApp link
+    function waLink(num, msg) {
+      return `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+    }
+
+    // Listen for the WhatsApp button click
+    document.getElementById("waBtn").addEventListener("click", () => {
+      window.location.href = waLink(WHATSAPP_NUMBER, MSG);
+    });
+  </script>
+
+</body>
+</html>
