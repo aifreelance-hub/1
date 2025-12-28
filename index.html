@@ -21,8 +21,273 @@
     </script>
 
     <style>
-        /* Custom CSS for page */
-        /* ... [same as previous style] ... */
+        :root {
+            --bg: #0c0f16;
+            --bg2: #0a0d13;
+            --card: rgba(255, 255, 255, .06);
+            --text: #eef2ff;
+            --muted: rgba(238, 242, 255, .74);
+            --line: rgba(255, 255, 255, .10);
+            --accent: #22c55e;
+            --shadow: 0 22px 70px rgba(0, 0, 0, .55);
+            --radius: 22px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Arial, sans-serif;
+            background: radial-gradient(1000px 540px at 18% -10%, rgba(34, 197, 94, .14), transparent 60%),
+                radial-gradient(900px 520px at 95% 10%, rgba(99, 102, 241, .12), transparent 62%),
+                linear-gradient(180deg, var(--bg), var(--bg2));
+            color: var(--text);
+            line-height: 1.55;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 18px;
+        }
+
+        .section {
+            padding: 34px 0;
+        }
+
+        .thinLine {
+            height: 1px;
+            background: var(--line);
+            margin: 22px 0;
+        }
+
+        .badgeRow {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 0 0 14px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .07);
+            border: 1px solid rgba(255, 255, 255, .12);
+            color: rgba(255, 255, 255, .92);
+            font-size: 13px;
+            backdrop-filter: blur(10px);
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 6px rgba(34, 197, 94, .15);
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: 44px;
+            line-height: 1.05;
+            letter-spacing: -.4px;
+        }
+
+        @media (max-width: 520px) {
+            h1 {
+                font-size: 34px;
+            }
+        }
+
+        .sub {
+            margin: 0;
+            color: rgba(238, 242, 255, .86);
+            font-size: 16.5px;
+            max-width: 780px;
+        }
+
+        /* ===== Hero Section ===== */
+        .heroCard.heroVideoWrap {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            box-shadow: var(--shadow);
+            background: rgba(255, 255, 255, .04);
+        }
+
+        .heroBgVideo {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            transform: scale(1.02);
+            filter: contrast(1.05) saturate(.95);
+        }
+
+        .heroBgOverlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(90deg, rgba(8, 10, 18, .86) 0%, rgba(8, 10, 18, .55) 45%, rgba(8, 10, 18, .78) 100%);
+        }
+
+        .heroInner {
+            position: relative;
+            z-index: 2;
+            padding: 18px;
+        }
+
+        .heroGrid {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 14px;
+            align-items: stretch;
+        }
+
+        @media (max-width: 900px) {
+            .heroGrid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mediaCard {
+            border-radius: 22px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            background: rgba(0, 0, 0, .22);
+            overflow: hidden;
+            min-height: 320px;
+            position: relative;
+        }
+
+        .mediaCard::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, .18), rgba(0, 0, 0, .58));
+            pointer-events: none;
+        }
+
+        .mediaCopy {
+            position: absolute;
+            left: 16px;
+            right: 16px;
+            bottom: 16px;
+            z-index: 2;
+            color: #fff;
+        }
+
+        .mediaTitle {
+            margin: 0 0 8px;
+            font-size: 20px;
+            letter-spacing: -.2px;
+        }
+
+        .mediaText {
+            margin: 0;
+            color: rgba(255, 255, 255, .90);
+            font-size: 13.8px;
+            max-width: 520px;
+        }
+
+        .side {
+            border-radius: 22px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            background: rgba(255, 255, 255, .07);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .miniT {
+            margin: 0;
+            font-weight: 950;
+            font-size: 15px;
+        }
+
+        .p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 13.8px;
+        }
+
+        .callout {
+            border-radius: 18px;
+            border: 1px solid rgba(34, 197, 94, .20);
+            background: rgba(34, 197, 94, .10);
+            padding: 14px;
+        }
+
+        .list {
+            margin: 10px 0 0;
+            padding-left: 18px;
+        }
+
+        .list li {
+            margin: 8px 0;
+            color: rgba(238, 242, 255, .86);
+            font-size: 13.8px;
+        }
+
+        .fine {
+            margin: 0;
+            color: rgba(238, 242, 255, .55);
+            font-size: 11.5px;
+            max-width: 980px;
+        }
+
+        .waBtn {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            z-index: 50;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 16px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #25d366, #1ebe5d);
+            color: #06160e;
+            font-weight: 950;
+            border: 0;
+            cursor: pointer;
+            box-shadow: 0 20px 60px rgba(37, 211, 102, .35);
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            min-width: 230px;
+        }
+
+        .waIcon {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #0b8f42;
+            box-shadow: 0 0 0 6px rgba(11, 143, 66, .22);
+        }
+
+        @media (max-width: 420px) {
+            .waBtn {
+                left: 16px;
+                right: 16px;
+                min-width: unset;
+            }
+        }
     </style>
 </head>
 
@@ -33,18 +298,20 @@
         <div class="badgeRow">
             <span class="badge"><span class="dot"></span> Discreet • Adults 18+</span>
             <span class="badge">Control • Stability • Confidence</span>
-            <span class="badge">General wellness support for male sexual health</span>
+            <span class="badge">General wellness support (non-medical)</span>
         </div>
 
-        <h1>Alpha Energy Capsules: Support for Male Performance and Vitality</h1>
+        <h1>Alpha Energy Capsules: Natural Support for Vitality and Confidence</h1>
 
         <p class="sub">
-            Alpha Energy Capsules are designed to support men's vitality by addressing issues such as premature ejaculation and erectile dysfunction. This blend combines essential minerals like Magnesium and Zinc with herbal ingredients that are traditionally used to enhance sexual health and stamina.
+            Alpha Energy Capsules are formulated to help men perform at their best — whether it’s at work, in the gym, or in everyday life. This advanced blend combines essential minerals like Magnesium and Zinc with herbal ingredients traditionally used to support energy, stamina, and reproductive health. It’s the natural way to help maintain vitality and confidence.
         </p>
 
-        <!-- Hero Section Image -->
+        <!-- Hero Section Video -->
         <div class="heroCard heroVideoWrap">
-            <img class="heroBgVideo" src="media/hero-image.jpg" alt="Alpha Energy Capsules" />
+            <video class="heroBgVideo" autoplay muted loop playsinline preload="auto" poster="media/hero-image.jpg">
+                <source src="media/hero.mp4" type="video/mp4">
+            </video>
             <div class="heroBgOverlay"></div>
 
             <div class="heroInner">
@@ -61,22 +328,22 @@
                     <div class="side">
                         <p class="miniT">Why Choose Alpha Energy Capsules?</p>
                         <p class="p">
-                            These capsules offer comprehensive wellness support for men, focusing on enhancing sexual performance, stamina, and overall vitality.
+                            These capsules offer comprehensive wellness support for active men, enhancing sexual performance, stamina, and confidence.
                         </p>
 
                         <div class="callout">
-                            <p class="miniT" style="margin:0 0 6px">Key Benefits</p>
-                            <p class="p" style="margin:0">Enhanced sexual health, stamina, and control for men facing performance challenges.</p>
+                            <p class="miniT" style="margin:0 0 6px">Why Alpha Energy Capsules?</p>
+                            <p class="p" style="margin:0">Energy, libido support, heart health, and enhanced vitality all in one powerful formula.</p>
                             <ul class="list">
-                                <li>Improved Sexual Health</li>
-                                <li>Support for Premature Ejaculation</li>
-                                <li>Increased Confidence and Control</li>
-                                <li>Vitality and Energy Boost</li>
-                                <li>Hormonal Balance</li>
+                                <li>Energy Boost</li>
+                                <li>Sexual Health Support</li>
+                                <li>Heart Health</li>
+                                <li>Bone Strength</li>
+                                <li>Enhanced Vitality</li>
                             </ul>
                         </div>
 
-                        <p class="p">If you’re ready, tap the WhatsApp button (the only button on this page) to get personalized support.</p>
+                        <p class="p">If you’re ready, tap the WhatsApp button (the only button on this page).</p>
                     </div>
                 </div>
 
@@ -90,15 +357,15 @@
 
     <!-- Product Details Section -->
     <div class="wrap section">
-        <h2 class="h2">Alpha Energy Capsules — Comprehensive Wellness Support</h2>
+        <h2 class="h2">Alpha Energy Capsules — Complete Wellness Support</h2>
         <p class="lead">Everything shown here is what you’ll receive. Packaging may vary by batch.</p>
 
         <div class="grid">
             <div class="gallery">
                 <div class="galleryGrid">
-                    <div class="gimg g1"><img src="media/capsules-closeup.jpg" alt="Alpha Energy Capsules" /></div>
-                    <div class="gimg g2"><img src="media/product1.jpg" alt="Alpha Energy Capsules Packaging" /></div>
-                    <div class="gimg g3"><img src="media/product2.jpg" alt="Alpha Energy Capsules Close-up" /></div>
+                    <div class="gimg g1"><img src="media/capsules-closeup.jpg" alt="Alpha Energy Capsules"></div>
+                    <div class="gimg g2"><img src="media/product1.jpg" alt="Alpha Energy Capsules Packaging"></div>
+                    <div class="gimg g3"><img src="media/product2.jpg" alt="Alpha Energy Capsules Close-up"></div>
                 </div>
 
                 <div class="thinLine"></div>
@@ -113,7 +380,7 @@
             <div class="rightPanel">
                 <p class="miniT">What’s Inside?</p>
                 <p class="p">
-                    Alpha Energy Capsules provide support for male performance, helping to address issues such as premature ejaculation and erectile dysfunction. The unique blend of herbs and minerals boosts energy levels, sexual function, and overall vitality.
+                    Alpha Energy Capsules provide support for stamina, performance, and overall vitality. The unique blend of herbs and minerals helps boost energy levels, improve sexual function, and support heart health.
                 </p>
 
                 <div class="thinLine"></div>
@@ -127,14 +394,15 @@
 
                 <p class="miniT">Usage</p>
                 <p class="p">
-                    90 capsules per bottle • Suggested use: Take three (3) capsules before bedtime.
+                    24 sachets per box • 10g per sachet • Suggested use: 1 sachet every 2 days (as needed).<br />
+                    Do not exceed recommended serving. Store in a cool, dry place. Keep out of reach of children.
                 </p>
 
                 <div class="thinLine"></div>
 
                 <p class="miniT">Why Choose Alpha Energy Capsules?</p>
                 <p class="p">
-                    These capsules are formulated to help men regain control, boost sexual health, and enhance overall vitality.
+                    These capsules offer comprehensive wellness support for active men, helping with energy, sexual health, and vitality.
                 </p>
             </div>
         </div>
@@ -150,7 +418,7 @@
     <script>
         const WHATSAPP_NUMBER = "15852027140";
         const MSG =
-            "Hi, I need help with performance control and stability. I am looking for guidance on dealing with premature ejaculation and erectile dysfunction.";
+            "Hi, I want private support for performance control and confidence. I struggle with stability and timing under pressure. I'm looking for realistic, non-medical guidance.";
 
         function waLink(num, msg) {
             return `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
